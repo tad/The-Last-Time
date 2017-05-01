@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6AF56B1EB6E4420039E248 /* DateDifference.swift */; };
 		ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */; };
 		ED8888CE1EAC1EA2003E21B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */; };
 		ED8888D01EAC1EA2003E21B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */; };
 		ED8888D31EAC1EA2003E21B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */; };
 		ED8888DE1EAC1EA2003E21B9 /* The_Last_TimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */; };
-		ED8888E91EAC1EA2003E21B9 /* The_Last_TimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888E81EAC1EA2003E21B9 /* The_Last_TimeUITests.swift */; };
 		ED8888F71EAC1ED2003E21B9 /* DoneTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */; };
 		ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */; };
 		ED8888FB1EAC2421003E21B9 /* DoneTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */; };
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED6AF56B1EB6E4420039E248 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
 		ED8888C51EAC1EA2003E21B9 /* The Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED8888CD1EAC1EA2003E21B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -47,8 +48,6 @@
 		ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Last_TimeTests.swift; sourceTree = "<group>"; };
 		ED8888DF1EAC1EA2003E21B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8888E41EAC1EA2003E21B9 /* The Last TimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Last TimeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED8888E81EAC1EA2003E21B9 /* The_Last_TimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Last_TimeUITests.swift; sourceTree = "<group>"; };
-		ED8888EA1EAC1EA2003E21B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTask.swift; sourceTree = "<group>"; };
 		ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTasksViewController.swift; sourceTree = "<group>"; };
 		ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTaskStore.swift; sourceTree = "<group>"; };
@@ -85,7 +84,6 @@
 			children = (
 				ED8888C71EAC1EA2003E21B9 /* The Last Time */,
 				ED8888DC1EAC1EA2003E21B9 /* The Last TimeTests */,
-				ED8888E71EAC1EA2003E21B9 /* The Last TimeUITests */,
 				ED8888C61EAC1EA2003E21B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +110,7 @@
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
+				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
 			);
 			path = "The Last Time";
 			sourceTree = "<group>";
@@ -123,15 +122,6 @@
 				ED8888DF1EAC1EA2003E21B9 /* Info.plist */,
 			);
 			path = "The Last TimeTests";
-			sourceTree = "<group>";
-		};
-		ED8888E71EAC1EA2003E21B9 /* The Last TimeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				ED8888E81EAC1EA2003E21B9 /* The_Last_TimeUITests.swift */,
-				ED8888EA1EAC1EA2003E21B9 /* Info.plist */,
-			);
-			path = "The Last TimeUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +265,7 @@
 				ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */,
 				ED8888F71EAC1ED2003E21B9 /* DoneTask.swift in Sources */,
 				ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */,
+				ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */,
 				ED8888FD1EAD3E93003E21B9 /* DoneTaskCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8888E91EAC1EA2003E21B9 /* The_Last_TimeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +518,7 @@
 				ED8888EF1EAC1EA2003E21B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED8888F01EAC1EA2003E21B9 /* Build configuration list for PBXNativeTarget "The Last TimeTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +527,7 @@
 				ED8888F21EAC1EA2003E21B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ED8888F31EAC1EA2003E21B9 /* Build configuration list for PBXNativeTarget "The Last TimeUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +536,7 @@
 				ED8888F51EAC1EA2003E21B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

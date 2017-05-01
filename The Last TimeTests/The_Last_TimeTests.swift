@@ -10,27 +10,43 @@ import XCTest
 @testable import The_Last_Time
 
 class The_Last_TimeTests: XCTestCase {
+  
+  var dateDifference: DateDifference!
+  var calendar: Calendar!
+  var now: Date!
+  
+  override func setUp() {
+    super.setUp()
+    dateDifference = DateDifference()
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    calendar = Calendar.current
+    now = Date()
+  }
+  
+  override func tearDown() {
+    dateDifference = nil
+    super.tearDown()
+  }
+  
+  
+  func testLessThanAMinuteAgo() {
+    let tenSecondsAgo = calendar.date(byAdding: .second, value: -10, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: tenSecondsAgo!), "Just now")
+  }
+  
+  func testOneMinuteAgo() {
+    let oneMinuteAgo = calendar.date(byAdding: .minute, value: -1, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneMinuteAgo!), "One minute ago")
+  }
+  
+  func test2To59MinutesAgo() {
+    
+    for minute in 2...59 {
+      let earlierTime = calendar.date(byAdding: .minute, value: 0 - minute, to: now)
+      XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: earlierTime!), "\(minute) minutes ago")
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+  }
+  
 }
