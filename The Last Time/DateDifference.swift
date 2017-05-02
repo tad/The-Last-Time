@@ -15,6 +15,12 @@ class DateDifference {
     let requestedComponent: Set<Calendar.Component> = [ .month, .day, .hour, .minute, .second]
     let timeDifference = calendar.dateComponents(requestedComponent, from: baseDate, to: earlierDate)
     
+    if timeDifference.hour! < 0 {
+      if timeDifference.hour! == -1 {
+        return "An hour ago"
+      }
+    }
+    
     if timeDifference.minute! < 0 {
       if timeDifference.minute! == -1 {
         return "One minute ago"

@@ -49,4 +49,18 @@ class The_Last_TimeTests: XCTestCase {
     }
   }
   
+  func testOneHourAgo() {
+    let oneHourAgo = calendar.date(byAdding: .hour, value: -1, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneHourAgo!), "An hour ago")
+  }
+  
+  func testOneHourOneMinuteOneSecondAgo() {
+    var oneHourOneMinuteOneSecondAgo = calendar.date(byAdding: .hour, value: -1, to: now!)
+    oneHourOneMinuteOneSecondAgo = calendar.date(byAdding: .minute, value: -1, to: oneHourOneMinuteOneSecondAgo!)
+    oneHourOneMinuteOneSecondAgo = calendar.date(byAdding: .second, value: -1, to: oneHourOneMinuteOneSecondAgo!)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneHourOneMinuteOneSecondAgo!), "An hour ago")
+  }
+  
 }
