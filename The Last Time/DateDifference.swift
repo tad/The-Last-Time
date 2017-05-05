@@ -12,12 +12,38 @@ class DateDifference {
   func itWasEstimate(baseDate: Date, earlierDate: Date) -> String {
     
     let calendar = Calendar.current
-    let requestedComponent: Set<Calendar.Component> = [ .month, .day, .hour, .minute, .second]
+    let requestedComponent: Set<Calendar.Component> = [ .year, .month, .day, .hour, .minute, .second]
     let timeDifference = calendar.dateComponents(requestedComponent, from: baseDate, to: earlierDate)
+    
+    if timeDifference.year! < 0 {
+      if timeDifference.year! == -1 {
+        return "Last year"
+      } else {
+        return "\(abs(timeDifference.year!)) years ago"
+      }
+    }
+    
+    if timeDifference.month! < 0 {
+      if timeDifference.month! == -1 {
+        return "A month ago"
+      } else {
+        return "\(abs(timeDifference.month!)) months ago"
+      }
+    }
+    
+    if timeDifference.day! < 0 {
+      if timeDifference.day! == -1 {
+        return "Yesterday"
+      } else {
+        return "\(abs(timeDifference.day!)) days ago"
+      }
+    }
     
     if timeDifference.hour! < 0 {
       if timeDifference.hour! == -1 {
         return "An hour ago"
+      } else {
+        return "\(abs(timeDifference.hour!)) hours ago"
       }
     }
     

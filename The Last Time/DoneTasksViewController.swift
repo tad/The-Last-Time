@@ -18,6 +18,8 @@ class DoneTasksViewController: UITableViewController {
     return formatter
   }()
   
+  var dateDifference = DateDifference()
+  
   @IBAction func done(_ sender: UIBarButtonItem) {
     
   }
@@ -76,7 +78,8 @@ class DoneTasksViewController: UITableViewController {
     let doneTask = doneTaskStore.allDoneTasks[indexPath.row]
     
     cell.nameLabel.text = doneTask.taskName
-    cell.taskCompleteLabel.text = dateFormatter.string(from: doneTask.dateCompleted)
+//    cell.taskCompleteLabel.text = dateFormatter.string(from: doneTask.dateCompleted)
+    cell.taskCompleteLabel.text = dateDifference.itWasEstimate(baseDate: Date(), earlierDate: doneTask.dateCompleted)
     
     return cell
   }

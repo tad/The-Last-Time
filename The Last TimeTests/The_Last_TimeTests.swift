@@ -63,4 +63,53 @@ class The_Last_TimeTests: XCTestCase {
     XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneHourOneMinuteOneSecondAgo!), "An hour ago")
   }
   
+  func test2To23HoursAgo() {
+    for hour in 2...23 {
+      let earlierTime = calendar.date(byAdding: .hour, value: 0 - hour, to: now)
+      XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: earlierTime!), "\(hour) hours ago")
+    }
+  }
+  
+  func testOneDayAgo() {
+    let oneDayAgo = calendar.date(byAdding: .day, value: -1, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneDayAgo!), "Yesterday")
+  }
+  
+  func test2To28DaysAgo() {
+    for day in 2...28 {
+      let earlierTime = calendar.date(byAdding: .day, value: 0 - day, to: now)
+      XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: earlierTime!), "\(day) days ago")
+    }
+  }
+  
+  func testOneMonthAgo() {
+    let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneMonthAgo!), "A month ago")
+  }
+  
+  func test2To11MonthsAgo() {
+    for month in 2...11 {
+      let earlierTime = calendar.date(byAdding: .month, value: 0 - month, to: now)
+      XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: earlierTime!), "\(month) months ago")
+    }
+  }
+  
+  func testOneYearAGo() {
+    let oneYearAgo = calendar.date(byAdding: .year, value: -1, to: now)
+    
+    XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: oneYearAgo!), "Last year")
+  }
+  
+  func testManyYearsAgo() {
+    for year in 2...99 {
+      let earlierTime = calendar.date(byAdding: .year, value: 0 - year, to: now)
+      XCTAssertEqual(dateDifference.itWasEstimate(baseDate: now, earlierDate: earlierTime!), "\(year) years ago")
+    }
+  }
+
+  
+  
+  
 }
