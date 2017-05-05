@@ -18,6 +18,7 @@ class DoneTasksViewController: UITableViewController {
     return formatter
   }()
   
+  
   var dateDifference = DateDifference()
   
   @IBAction func done(_ sender: UIBarButtonItem) {
@@ -55,6 +56,17 @@ class DoneTasksViewController: UITableViewController {
     
     tableView.rowHeight = UITableViewAutomaticDimension
     tableView.estimatedRowHeight = 65
+    
+    NotificationCenter.default.addObserver(
+      self,
+      selector: #selector(applicationDidBecomeActive(_:)),
+      name: NSNotification.Name.UIApplicationDidBecomeActive,
+      object: nil)
+    
+  }
+  
+  func applicationDidBecomeActive(_ notification: NSNotification) {
+    tableView.reloadData()
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +90,6 @@ class DoneTasksViewController: UITableViewController {
     let doneTask = doneTaskStore.allDoneTasks[indexPath.row]
     
     cell.nameLabel.text = doneTask.taskName
-//    cell.taskCompleteLabel.text = dateFormatter.string(from: doneTask.dateCompleted)
     cell.taskCompleteLabel.text = dateDifference.itWasEstimate(baseDate: Date(), earlierDate: doneTask.dateCompleted)
     
     return cell
@@ -113,8 +124,10 @@ class DoneTasksViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
+    print("View Will Appear")
     tableView.reloadData()
   }
+  
+  
   
 }

@@ -103,6 +103,7 @@
 			children = (
 				ED8888D41EAC1EA2003E21B9 /* Info.plist */,
 				ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */,
+				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
 				ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */,
 				ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */,
 				ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */,
@@ -110,7 +111,6 @@
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
-				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
 			);
 			path = "The Last Time";
 			sourceTree = "<group>";
