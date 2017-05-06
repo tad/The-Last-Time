@@ -13,6 +13,12 @@ class DateDifference {
     
     let calendar = Calendar.current
     let requestedComponent: Set<Calendar.Component> = [ .year, .month, .day, .hour, .minute, .second]
+    
+    let baseDate = Date(timeIntervalSinceReferenceDate: baseDate
+      .timeIntervalSinceReferenceDate.rounded())
+    let earlierDate = Date(timeIntervalSinceReferenceDate: earlierDate
+      .timeIntervalSinceReferenceDate.rounded())
+    
     let timeDifference = calendar.dateComponents(requestedComponent, from: baseDate, to: earlierDate)
     
     if timeDifference.year! < 0 {
