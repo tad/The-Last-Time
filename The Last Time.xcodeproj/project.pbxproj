@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED681C681EC562AD0096B9FA /* TheLastTime.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED681C661EC562AD0096B9FA /* TheLastTime.xcdatamodeld */; };
+		ED681C831EC56B8B0096B9FA /* Completion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C7F1EC56B8B0096B9FA /* Completion+CoreDataClass.swift */; };
+		ED681C841EC56B8B0096B9FA /* Completion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C801EC56B8B0096B9FA /* Completion+CoreDataProperties.swift */; };
+		ED681C851EC56B8B0096B9FA /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C811EC56B8B0096B9FA /* Task+CoreDataClass.swift */; };
+		ED681C861EC56B8B0096B9FA /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C821EC56B8B0096B9FA /* Task+CoreDataProperties.swift */; };
+		ED681C891EC56C410096B9FA /* TaskCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C881EC56C410096B9FA /* TaskCompletion.swift */; };
+		ED681C8B1EC56CA20096B9FA /* TaskCompletionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */; };
 		ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6AF56B1EB6E4420039E248 /* DateDifference.swift */; };
 		ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */; };
 		ED8888CE1EAC1EA2003E21B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */; };
 		ED8888D01EAC1EA2003E21B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */; };
 		ED8888D31EAC1EA2003E21B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */; };
 		ED8888DE1EAC1EA2003E21B9 /* The_Last_TimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */; };
-		ED8888F71EAC1ED2003E21B9 /* DoneTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */; };
 		ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */; };
-		ED8888FB1EAC2421003E21B9 /* DoneTaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */; };
 		ED8888FD1EAD3E93003E21B9 /* DoneTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED681C671EC562AD0096B9FA /* TheLastTime.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheLastTime.xcdatamodel; sourceTree = "<group>"; };
+		ED681C7F1EC56B8B0096B9FA /* Completion+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Completion+CoreDataClass.swift"; path = "../Completion+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ED681C801EC56B8B0096B9FA /* Completion+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Completion+CoreDataProperties.swift"; path = "../Completion+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ED681C811EC56B8B0096B9FA /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataClass.swift"; path = "../Task+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ED681C821EC56B8B0096B9FA /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "../Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ED681C881EC56C410096B9FA /* TaskCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletion.swift; sourceTree = "<group>"; };
+		ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletionStore.swift; sourceTree = "<group>"; };
 		ED6AF56B1EB6E4420039E248 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
 		ED8888C51EAC1EA2003E21B9 /* The Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,9 +60,7 @@
 		ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Last_TimeTests.swift; sourceTree = "<group>"; };
 		ED8888DF1EAC1EA2003E21B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8888E41EAC1EA2003E21B9 /* The Last TimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Last TimeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTask.swift; sourceTree = "<group>"; };
 		ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTasksViewController.swift; sourceTree = "<group>"; };
-		ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTaskStore.swift; sourceTree = "<group>"; };
 		ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +89,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED681C871EC56BF30096B9FA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				ED681C7F1EC56B8B0096B9FA /* Completion+CoreDataClass.swift */,
+				ED681C801EC56B8B0096B9FA /* Completion+CoreDataProperties.swift */,
+				ED681C811EC56B8B0096B9FA /* Task+CoreDataClass.swift */,
+				ED681C821EC56B8B0096B9FA /* Task+CoreDataProperties.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		ED8888BC1EAC1EA2003E21B9 = {
 			isa = PBXGroup;
 			children = (
@@ -101,16 +122,18 @@
 		ED8888C71EAC1EA2003E21B9 /* The Last Time */ = {
 			isa = PBXGroup;
 			children = (
+				ED681C871EC56BF30096B9FA /* Data */,
 				ED8888D41EAC1EA2003E21B9 /* Info.plist */,
 				ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */,
 				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
-				ED8888F61EAC1ED2003E21B9 /* DoneTask.swift */,
 				ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */,
-				ED8888FA1EAC2421003E21B9 /* DoneTaskStore.swift */,
 				ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */,
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
+				ED681C661EC562AD0096B9FA /* TheLastTime.xcdatamodeld */,
+				ED681C881EC56C410096B9FA /* TaskCompletion.swift */,
+				ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */,
 			);
 			path = "The Last Time";
 			sourceTree = "<group>";
@@ -261,12 +284,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED8888FB1EAC2421003E21B9 /* DoneTaskStore.swift in Sources */,
+				ED681C891EC56C410096B9FA /* TaskCompletion.swift in Sources */,
 				ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */,
-				ED8888F71EAC1ED2003E21B9 /* DoneTask.swift in Sources */,
+				ED681C681EC562AD0096B9FA /* TheLastTime.xcdatamodeld in Sources */,
+				ED681C861EC56B8B0096B9FA /* Task+CoreDataProperties.swift in Sources */,
+				ED681C841EC56B8B0096B9FA /* Completion+CoreDataProperties.swift in Sources */,
 				ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */,
+				ED681C851EC56B8B0096B9FA /* Task+CoreDataClass.swift in Sources */,
 				ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */,
+				ED681C8B1EC56CA20096B9FA /* TaskCompletionStore.swift in Sources */,
 				ED8888FD1EAD3E93003E21B9 /* DoneTaskCell.swift in Sources */,
+				ED681C831EC56B8B0096B9FA /* Completion+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +567,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ED681C661EC562AD0096B9FA /* TheLastTime.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ED681C671EC562AD0096B9FA /* TheLastTime.xcdatamodel */,
+			);
+			currentVersion = ED681C671EC562AD0096B9FA /* TheLastTime.xcdatamodel */;
+			path = TheLastTime.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ED8888BD1EAC1EA2003E21B9 /* Project object */;
 }
