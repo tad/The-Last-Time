@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoneTaskCell: UITableViewCell {
+class TaskCompletionCell: UITableViewCell {
   @IBOutlet var nameLabel: UILabel!
   @IBOutlet var taskCompleteLabel: UILabel!
   

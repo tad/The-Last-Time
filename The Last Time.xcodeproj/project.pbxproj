@@ -20,8 +20,8 @@
 		ED8888D01EAC1EA2003E21B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */; };
 		ED8888D31EAC1EA2003E21B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */; };
 		ED8888DE1EAC1EA2003E21B9 /* The_Last_TimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */; };
-		ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */; };
-		ED8888FD1EAD3E93003E21B9 /* DoneTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */; };
+		ED8888F91EAC2041003E21B9 /* TaskCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888F81EAC2041003E21B9 /* TaskCompletionViewController.swift */; };
+		ED8888FD1EAD3E93003E21B9 /* TaskCompletionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888FC1EAD3E93003E21B9 /* TaskCompletionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,8 @@
 		ED8888DD1EAC1EA2003E21B9 /* The_Last_TimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = The_Last_TimeTests.swift; sourceTree = "<group>"; };
 		ED8888DF1EAC1EA2003E21B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED8888E41EAC1EA2003E21B9 /* The Last TimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "The Last TimeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTasksViewController.swift; sourceTree = "<group>"; };
-		ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneTaskCell.swift; sourceTree = "<group>"; };
+		ED8888F81EAC2041003E21B9 /* TaskCompletionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletionViewController.swift; sourceTree = "<group>"; };
+		ED8888FC1EAD3E93003E21B9 /* TaskCompletionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,8 +126,8 @@
 				ED8888D41EAC1EA2003E21B9 /* Info.plist */,
 				ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */,
 				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
-				ED8888FC1EAD3E93003E21B9 /* DoneTaskCell.swift */,
-				ED8888F81EAC2041003E21B9 /* DoneTasksViewController.swift */,
+				ED8888FC1EAD3E93003E21B9 /* TaskCompletionCell.swift */,
+				ED8888F81EAC2041003E21B9 /* TaskCompletionViewController.swift */,
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
@@ -285,7 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED681C891EC56C410096B9FA /* TaskCompletion.swift in Sources */,
-				ED8888F91EAC2041003E21B9 /* DoneTasksViewController.swift in Sources */,
+				ED8888F91EAC2041003E21B9 /* TaskCompletionViewController.swift in Sources */,
 				ED681C681EC562AD0096B9FA /* TheLastTime.xcdatamodeld in Sources */,
 				ED681C861EC56B8B0096B9FA /* Task+CoreDataProperties.swift in Sources */,
 				ED681C841EC56B8B0096B9FA /* Completion+CoreDataProperties.swift in Sources */,
@@ -293,7 +293,7 @@
 				ED681C851EC56B8B0096B9FA /* Task+CoreDataClass.swift in Sources */,
 				ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */,
 				ED681C8B1EC56CA20096B9FA /* TaskCompletionStore.swift in Sources */,
-				ED8888FD1EAD3E93003E21B9 /* DoneTaskCell.swift in Sources */,
+				ED8888FD1EAD3E93003E21B9 /* TaskCompletionCell.swift in Sources */,
 				ED681C831EC56B8B0096B9FA /* Completion+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

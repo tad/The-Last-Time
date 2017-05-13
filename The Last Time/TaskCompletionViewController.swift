@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DoneTasksViewController: UITableViewController {
+class TaskCompletionViewController: UITableViewController {
   var taskCompletionStore: TaskCompletionStore!
   
   private let dateFormatter: DateFormatter = {
@@ -75,7 +75,7 @@ class DoneTasksViewController: UITableViewController {
     
     // Get a new or recycled cell
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "DoneTaskCell", for: indexPath) as! DoneTaskCell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCompletionCell", for: indexPath) as! TaskCompletionCell
     
     // Set the text on the cell with the description of the item
     // that is at the nth index of items, where n = row this cell

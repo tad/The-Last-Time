@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Access the ItemsViewController and set its item store
     let navController = window!.rootViewController as! UINavigationController
-    let doneTasksController = navController.topViewController as! DoneTasksViewController
-    doneTasksController.taskCompletionStore = taskCompletionStore
+    let taskCompletionController = navController.topViewController as! TaskCompletionViewController
+    taskCompletionController.taskCompletionStore = taskCompletionStore
     
     return true
   }

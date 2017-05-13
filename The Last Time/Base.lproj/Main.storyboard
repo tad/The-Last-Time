@@ -13,13 +13,13 @@
         <!--The Last Time I...-->
         <scene sceneID="MVt-SV-PSU">
             <objects>
-                <tableViewController id="G1d-Cd-k4B" customClass="DoneTasksViewController" customModule="The_Last_Time" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="G1d-Cd-k4B" customClass="TaskCompletionViewController" customModule="The_Last_Time" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="BW5-mm-7Iw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DoneTaskCell" rowHeight="71" id="CrU-0d-KaL" customClass="DoneTaskCell" customModule="The_Last_Time" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCompletionCell" rowHeight="71" id="CrU-0d-KaL" customClass="TaskCompletionCell" customModule="The_Last_Time" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="71"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CrU-0d-KaL" id="bgb-ZA-dk5">
