@@ -28,6 +28,10 @@ class TaskCompletionStore {
     taskCompletions = getTaskCompletions()
   }
   
+  
+  func refresh() {
+    getTaskCompletions()
+  }
     
   func addTaskCompletion(name: String, completionDate: Date) {
     let completion = Completion(context: persistentContainer.viewContext)
@@ -41,7 +45,39 @@ class TaskCompletionStore {
     } catch let error as NSError {
       print("Save failed: \(error), \(error.userInfo)")
     }
-  }    
+  }
+  
+  func addNewCompletion(forTask: Task) {
+    let completion = Completion(context: persistentContainer.viewContext)
+    completion.date = NSDate()
+    forTask.addToCompletions(completion)
+    
+    // Save the managed object context
+    do {
+      try persistentContainer.viewContext.save()
+    } catch let error as NSError {
+      print("Save error: \(error), description:\(error.userInfo)")
+    }
+  }
+  
+  
+  // TODO: Finish this code rightchere
+  func getTask(_ taskName: String) -> Task {
+    
+    var returnTask = Task()
+    
+    let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
+    let taskFetchPredicate = NSPredicate(format: "%K == %@", #keyPath(Task.name), taskName)
+    fetchRequest.predicate = taskFetchPredicate
+    
+    do {
+       returnTask = try persistentContainer.viewContext.fetch(fetchRequest).first!
+    } catch let error as NSError {
+      print("Fetch failed: \(error), \(error.userInfo)")
+    }
+    
+    return returnTask
+  }
   
   func getTaskCompletions() -> [TaskCompletion] {
     var taskCompletions = [TaskCompletion]()
@@ -50,7 +86,7 @@ class TaskCompletionStore {
       let tasks = try persistentContainer.viewContext.fetch(fetchRequest)
       
       for task in tasks {
-        if let mostRecentCompletion = task.completions?.firstObject as? Completion {
+        if let mostRecentCompletion = task.completions?.lastObject as? Completion {
           let taskCompletion = TaskCompletion(date: mostRecentCompletion.date! as Date, name: task.name!)
           taskCompletions.append(taskCompletion)
         }

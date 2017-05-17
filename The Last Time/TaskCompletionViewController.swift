@@ -64,6 +64,7 @@ class TaskCompletionViewController: UITableViewController {
   }
   
   func applicationDidBecomeActive(_ notification: NSNotification) {
+    taskCompletionStore = TaskCompletionStore()
     tableView.reloadData()
   }
   
@@ -90,8 +91,24 @@ class TaskCompletionViewController: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    print("View Will Appear")
+    taskCompletionStore = TaskCompletionStore()
     tableView.reloadData()
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    switch segue.identifier {
+    case "showTaskDetail"?:
+      if let row = tableView.indexPathForSelectedRow?.row {
+        let taskName = taskCompletionStore.taskCompletions[row].name
+        let task = taskCompletionStore.getTask(taskName)
+        let taskDetailViewController = segue.destination as! TaskDetailViewController
+        
+        taskDetailViewController.task = task
+        taskDetailViewController.taskCompletionStore = taskCompletionStore
+      }
+    default:
+      return
+    }
   }
   
   

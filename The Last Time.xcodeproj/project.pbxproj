@@ -14,6 +14,7 @@
 		ED681C861EC56B8B0096B9FA /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C821EC56B8B0096B9FA /* Task+CoreDataProperties.swift */; };
 		ED681C891EC56C410096B9FA /* TaskCompletion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C881EC56C410096B9FA /* TaskCompletion.swift */; };
 		ED681C8B1EC56CA20096B9FA /* TaskCompletionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */; };
+		ED681C8E1EC6C37E0096B9FA /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED681C8D1EC6C37E0096B9FA /* TaskDetailViewController.swift */; };
 		ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED6AF56B1EB6E4420039E248 /* DateDifference.swift */; };
 		ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */; };
 		ED8888CE1EAC1EA2003E21B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		ED681C821EC56B8B0096B9FA /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Task+CoreDataProperties.swift"; path = "../Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ED681C881EC56C410096B9FA /* TaskCompletion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletion.swift; sourceTree = "<group>"; };
 		ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCompletionStore.swift; sourceTree = "<group>"; };
+		ED681C8D1EC6C37E0096B9FA /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		ED6AF56B1EB6E4420039E248 /* DateDifference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateDifference.swift; sourceTree = "<group>"; };
 		ED8888C51EAC1EA2003E21B9 /* The Last Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Last Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +91,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ED681C871EC56BF30096B9FA /* Data */ = {
+		ED681C8C1EC6BCCB0096B9FA /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				ED681C7F1EC56B8B0096B9FA /* Completion+CoreDataClass.swift */,
@@ -122,7 +124,7 @@
 		ED8888C71EAC1EA2003E21B9 /* The Last Time */ = {
 			isa = PBXGroup;
 			children = (
-				ED681C871EC56BF30096B9FA /* Data */,
+				ED681C8C1EC6BCCB0096B9FA /* Data */,
 				ED8888D41EAC1EA2003E21B9 /* Info.plist */,
 				ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */,
 				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
@@ -131,6 +133,7 @@
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
+				ED681C8D1EC6C37E0096B9FA /* TaskDetailViewController.swift */,
 				ED681C661EC562AD0096B9FA /* TheLastTime.xcdatamodeld */,
 				ED681C881EC56C410096B9FA /* TaskCompletion.swift */,
 				ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */,
@@ -290,6 +293,7 @@
 				ED681C861EC56B8B0096B9FA /* Task+CoreDataProperties.swift in Sources */,
 				ED681C841EC56B8B0096B9FA /* Completion+CoreDataProperties.swift in Sources */,
 				ED8888C91EAC1EA2003E21B9 /* AppDelegate.swift in Sources */,
+				ED681C8E1EC6C37E0096B9FA /* TaskDetailViewController.swift in Sources */,
 				ED681C851EC56B8B0096B9FA /* Task+CoreDataClass.swift in Sources */,
 				ED6AF56C1EB6E4420039E248 /* DateDifference.swift in Sources */,
 				ED681C8B1EC56CA20096B9FA /* TaskCompletionStore.swift in Sources */,

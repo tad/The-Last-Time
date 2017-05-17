@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wr7-zd-kxW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wr7-zd-kxW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,6 +51,7 @@
                                 <connections>
                                     <outlet property="nameLabel" destination="bD0-6M-t9M" id="O33-Nu-alq"/>
                                     <outlet property="taskCompleteLabel" destination="KHT-6n-fbn" id="wVc-45-kAh"/>
+                                    <segue destination="6Rp-ZN-uWE" kind="show" identifier="showTaskDetail" id="vCy-qy-NPP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -70,6 +71,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ipW-wf-qW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="800.79999999999995" y="106.59670164917542"/>
+        </scene>
+        <!--Task Detail View Controller-->
+        <scene sceneID="chn-MF-tLN">
+            <objects>
+                <viewController id="6Rp-ZN-uWE" customClass="TaskDetailViewController" customModule="The_Last_Time" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aEK-Qk-cuk"/>
+                        <viewControllerLayoutGuide type="bottom" id="XVg-yU-Shc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0sl-cK-zPB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqB-Ff-QpI">
+                                <rect key="frame" x="166.5" y="72" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ROA-jE-Mz2">
+                                <rect key="frame" x="0.0" y="168" width="375" height="533"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkR-nD-h2e">
+                                <rect key="frame" x="116" y="109" width="144" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Complete Again Now"/>
+                                <connections>
+                                    <action selector="completeAgainNow:" destination="6Rp-ZN-uWE" eventType="touchUpInside" id="bIQ-Bm-Oee"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QqB-Ff-QpI" firstAttribute="top" secondItem="aEK-Qk-cuk" secondAttribute="bottom" constant="8" id="6rL-Uq-SKT"/>
+                            <constraint firstItem="QqB-Ff-QpI" firstAttribute="centerX" secondItem="0sl-cK-zPB" secondAttribute="centerX" id="Qir-i8-YHD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ROA-jE-Mz2" id="C6f-bY-QRJ"/>
+                        <outlet property="taskName" destination="QqB-Ff-QpI" id="1Q3-vi-fge"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uhp-ur-w6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586.4000000000001" y="110.19490254872565"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="705-SO-H3j">
