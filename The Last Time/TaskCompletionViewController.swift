@@ -72,7 +72,22 @@ class TaskCompletionViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return taskCompletionStore.taskCompletions.count
   }
+  
+  override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
+    if editingStyle == .delete {      
+      let taskName = taskCompletionStore.taskCompletions[indexPath.row].name
+      let task = taskCompletionStore.getTask(taskName)
+      taskCompletionStore.deleteTask(task)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }    
+    tableView.reloadData()
+  }
+  
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     // Get a new or recycled cell

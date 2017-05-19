@@ -58,10 +58,20 @@ class TaskCompletionStore {
       print("Save error: \(error), description:\(error.userInfo)")
     }
   }
+  
+  func deleteTask(_ task:Task) {
+    persistentContainer.viewContext.delete(task)
+    do {
+      try persistentContainer.viewContext.save()
+    } catch let error as NSError {
+      print("Delete failed: \(error), \(error.userInfo)")
+    }
+    self.refresh()
+  }
       
   func getTask(_ taskName: String) -> Task {
     
-    var returnTask = Task()
+    var returnTask: Task?
     
     let fetchRequest = NSFetchRequest<Task>(entityName: "Task")
     let taskFetchPredicate = NSPredicate(format: "%K == %@", #keyPath(Task.name), taskName)
@@ -73,7 +83,7 @@ class TaskCompletionStore {
       print("Fetch failed: \(error), \(error.userInfo)")
     }
     
-    return returnTask
+    return returnTask!
   }
   
   func getTaskCompletions() -> [TaskCompletion] {
