@@ -12,4 +12,5 @@ import Foundation
 struct TaskCompletion {
   var date: Date
   var name: String
+  var totalCompletes: Int
 }

@@ -11,11 +11,13 @@ import UIKit
 class TaskCompletionCell: UITableViewCell {
   @IBOutlet var nameLabel: UILabel!
   @IBOutlet var taskCompleteLabel: UILabel!
+  @IBOutlet var totalCompletes: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
     
     nameLabel.adjustsFontForContentSizeCategory = true
     taskCompleteLabel.adjustsFontForContentSizeCategory = true
+    totalCompletes.adjustsFontForContentSizeCategory = true
   }
 }

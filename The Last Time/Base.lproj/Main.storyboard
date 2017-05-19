@@ -14,16 +14,16 @@
         <scene sceneID="MVt-SV-PSU">
             <objects>
                 <tableViewController id="G1d-Cd-k4B" customClass="TaskCompletionViewController" customModule="The_Last_Time" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="BW5-mm-7Iw">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="108" sectionHeaderHeight="28" sectionFooterHeight="28" id="BW5-mm-7Iw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCompletionCell" rowHeight="71" id="CrU-0d-KaL" customClass="TaskCompletionCell" customModule="The_Last_Time" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCompletionCell" rowHeight="108" id="CrU-0d-KaL" customClass="TaskCompletionCell" customModule="The_Last_Time" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CrU-0d-KaL" id="bgb-ZA-dk5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bD0-6M-t9M">
@@ -33,24 +33,32 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHT-6n-fbn">
-                                            <rect key="frame" x="19" y="41" width="42" height="21"/>
+                                            <rect key="frame" x="19" y="44" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drS-PC-guR">
+                                            <rect key="frame" x="19" y="79" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="KHT-6n-fbn" secondAttribute="bottom" constant="1" id="2cw-LK-HsF"/>
-                                        <constraint firstItem="KHT-6n-fbn" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="2nd-8O-p8e"/>
-                                        <constraint firstItem="KHT-6n-fbn" firstAttribute="top" secondItem="bD0-6M-t9M" secondAttribute="bottom" constant="12" id="DLj-NJ-6R9"/>
-                                        <constraint firstItem="bD0-6M-t9M" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="GYI-6w-O1Q"/>
-                                        <constraint firstItem="bD0-6M-t9M" firstAttribute="top" secondItem="bgb-ZA-dk5" secondAttribute="topMargin" id="H5M-s5-jQG"/>
-                                        <constraint firstItem="bD0-6M-t9M" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="MH9-UK-GTH"/>
+                                        <constraint firstItem="KHT-6n-fbn" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="4DA-qr-0YC"/>
+                                        <constraint firstAttribute="topMargin" secondItem="bD0-6M-t9M" secondAttribute="top" id="Rid-Le-bYb"/>
+                                        <constraint firstItem="drS-PC-guR" firstAttribute="top" secondItem="KHT-6n-fbn" secondAttribute="bottom" constant="14" id="VJO-iD-UfQ"/>
+                                        <constraint firstItem="KHT-6n-fbn" firstAttribute="top" secondItem="bD0-6M-t9M" secondAttribute="bottom" constant="15" id="X08-89-yLk"/>
+                                        <constraint firstItem="bD0-6M-t9M" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="YV7-58-K8U"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="drS-PC-guR" secondAttribute="bottom" id="ffT-dE-vbY"/>
+                                        <constraint firstItem="drS-PC-guR" firstAttribute="leading" secondItem="bgb-ZA-dk5" secondAttribute="leadingMargin" constant="11" id="pQg-uy-9gU"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="bD0-6M-t9M" id="O33-Nu-alq"/>
                                     <outlet property="taskCompleteLabel" destination="KHT-6n-fbn" id="wVc-45-kAh"/>
+                                    <outlet property="totalCompletes" destination="drS-PC-guR" id="eLG-U2-pS9"/>
                                     <segue destination="6Rp-ZN-uWE" kind="show" identifier="showTaskDetail" id="vCy-qy-NPP"/>
                                 </connections>
                             </tableViewCell>

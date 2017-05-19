@@ -37,6 +37,7 @@ class TaskCompletionViewController: UITableViewController {
       (action) -> Void in
       if let taskName = alertController.textFields?.first?.text {
         self.taskCompletionStore.addTaskCompletion(name: taskName, completionDate: Date())
+        self.taskCompletionStore.refresh()
         self.tableView.reloadData()
       }
     }
@@ -53,7 +54,7 @@ class TaskCompletionViewController: UITableViewController {
     super.viewDidLoad()
     
     tableView.rowHeight = UITableViewAutomaticDimension
-    tableView.estimatedRowHeight = 65
+    tableView.estimatedRowHeight = 95
     
     NotificationCenter.default.addObserver(
       self,
@@ -64,7 +65,7 @@ class TaskCompletionViewController: UITableViewController {
   }
   
   func applicationDidBecomeActive(_ notification: NSNotification) {
-    taskCompletionStore = TaskCompletionStore()
+    taskCompletionStore.refresh()
     tableView.reloadData()
   }
   
@@ -84,14 +85,15 @@ class TaskCompletionViewController: UITableViewController {
     let taskCompletion = taskCompletionStore.taskCompletions[indexPath.row]
     
     cell.nameLabel.text = taskCompletion.name
-    cell.taskCompleteLabel.text = dateDifference.itWasEstimate(baseDate: Date(), earlierDate: taskCompletion.date)
+    cell.taskCompleteLabel.text = "Completed: \(dateDifference.itWasEstimate(baseDate: Date(), earlierDate: taskCompletion.date))"
+    cell.totalCompletes.text = "Total: \(taskCompletion.totalCompletes)"
     
     return cell
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    taskCompletionStore = TaskCompletionStore()
+    taskCompletionStore.refresh()
     tableView.reloadData()
   }
   

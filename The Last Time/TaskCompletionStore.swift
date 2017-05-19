@@ -28,7 +28,6 @@ class TaskCompletionStore {
     taskCompletions = getTaskCompletions()
   }
   
-  
   func refresh() {
     taskCompletions = getTaskCompletions()
   }
@@ -41,7 +40,7 @@ class TaskCompletionStore {
     task.addToCompletions(completion)
     do {
       try persistentContainer.viewContext.save()
-      taskCompletions.append(TaskCompletion(date: completionDate, name: name))
+      taskCompletions.append(TaskCompletion(date: completionDate, name: name, totalCompletes: 1))
     } catch let error as NSError {
       print("Save failed: \(error), \(error.userInfo)")
     }
@@ -59,9 +58,7 @@ class TaskCompletionStore {
       print("Save error: \(error), description:\(error.userInfo)")
     }
   }
-  
-  
-  // TODO: Finish this code rightchere
+      
   func getTask(_ taskName: String) -> Task {
     
     var returnTask = Task()
@@ -87,7 +84,7 @@ class TaskCompletionStore {
       
       for task in tasks {
         if let mostRecentCompletion = task.completions?.lastObject as? Completion {
-          let taskCompletion = TaskCompletion(date: mostRecentCompletion.date! as Date, name: task.name!)
+          let taskCompletion = TaskCompletion(date: mostRecentCompletion.date! as Date, name: task.name!, totalCompletes: (task.completions?.count)!)
           taskCompletions.append(taskCompletion)
         }
       }
