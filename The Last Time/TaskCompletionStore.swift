@@ -30,7 +30,7 @@ class TaskCompletionStore {
   
   
   func refresh() {
-    getTaskCompletions()
+    taskCompletions = getTaskCompletions()
   }
     
   func addTaskCompletion(name: String, completionDate: Date) {
@@ -94,6 +94,9 @@ class TaskCompletionStore {
     } catch let error as NSError {
       print("Fetch failed: \(error), \(error.userInfo)")
     }
+    
+    // Sort array so most recently completed tasks are first
+    taskCompletions = taskCompletions.sorted(by: {$0.date > $1.date})
     
     return taskCompletions
   }
