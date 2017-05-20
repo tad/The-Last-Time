@@ -25,13 +25,14 @@ class TaskCompletionStore {
   }()
   
   init() {
-    taskCompletions = getTaskCompletions()
+    refresh()
   }
   
   func refresh() {
     taskCompletions = getTaskCompletions()
   }
-    
+  
+  
   func addTaskCompletion(name: String, completionDate: Date) {
     let completion = Completion(context: persistentContainer.viewContext)
     completion.date = completionDate as NSDate
@@ -81,7 +82,7 @@ class TaskCompletionStore {
        returnTask = try persistentContainer.viewContext.fetch(fetchRequest).first!
     } catch let error as NSError {
       print("Fetch failed: \(error), \(error.userInfo)")
-    }
+    }        
     
     return returnTask!
   }

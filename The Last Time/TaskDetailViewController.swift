@@ -29,8 +29,6 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
   }
   
@@ -50,7 +48,7 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
                 
-    guard let completion = task.completions?[indexPath.row] as? Completion, let completionDate = completion.date as Date? else {
+    guard let completion = task.completions?.reversed[indexPath.row] as? Completion, let completionDate = completion.date as Date? else {
       return cell
     }
     

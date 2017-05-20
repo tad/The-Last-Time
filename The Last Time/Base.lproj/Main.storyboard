@@ -102,6 +102,10 @@
                                 <rect key="frame" x="0.0" y="168" width="375" height="533"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6Rp-ZN-uWE" id="P1V-H0-b6F"/>
+                                    <outlet property="delegate" destination="6Rp-ZN-uWE" id="jWK-5c-vR2"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkR-nD-h2e">
                                 <rect key="frame" x="116" y="109" width="144" height="30"/>
