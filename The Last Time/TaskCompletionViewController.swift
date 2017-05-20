@@ -36,7 +36,7 @@ class TaskCompletionViewController: UITableViewController {
     let okAction = UIAlertAction(title: "OK", style: .default) {
       (action) -> Void in
       if let taskName = alertController.textFields?.first?.text {
-        self.taskCompletionStore.addTaskCompletion(name: taskName, completionDate: Date())
+        self.taskCompletionStore.addTaskCompletion(name: taskName, completionDate: nil)
         self.taskCompletionStore.refresh()
         self.tableView.reloadData()
       }
@@ -100,7 +100,12 @@ class TaskCompletionViewController: UITableViewController {
     let taskCompletion = taskCompletionStore.taskCompletions[indexPath.row]
     
     cell.nameLabel.text = taskCompletion.name
-    cell.taskCompleteLabel.text = "Completed: \(dateDifference.itWasEstimate(baseDate: Date(), earlierDate: taskCompletion.date))"
+    if let date = taskCompletion.date {
+      cell.taskCompleteLabel.text = "Completed: \(dateDifference.itWasEstimate(baseDate: Date(), earlierDate: date))"
+    } else {
+      cell.taskCompleteLabel.text = "Never completed"
+    }
+    
     cell.totalCompletes.text = "Total: \(taskCompletion.totalCompletes)"
     
     return cell

@@ -10,7 +10,7 @@ import Foundation
 
 // This is a view only model for the initial table view
 struct TaskCompletion {
-  var date: Date
+  var date: Date?
   var name: String
   var totalCompletes: Int
 }

@@ -124,19 +124,19 @@
 		ED8888C71EAC1EA2003E21B9 /* The Last Time */ = {
 			isa = PBXGroup;
 			children = (
-				ED681C8C1EC6BCCB0096B9FA /* Data */,
 				ED8888D41EAC1EA2003E21B9 /* Info.plist */,
 				ED8888C81EAC1EA2003E21B9 /* AppDelegate.swift */,
 				ED6AF56B1EB6E4420039E248 /* DateDifference.swift */,
+				ED681C881EC56C410096B9FA /* TaskCompletion.swift */,
 				ED8888FC1EAD3E93003E21B9 /* TaskCompletionCell.swift */,
+				ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */,
 				ED8888F81EAC2041003E21B9 /* TaskCompletionViewController.swift */,
+				ED681C8D1EC6C37E0096B9FA /* TaskDetailViewController.swift */,
 				ED8888CF1EAC1EA2003E21B9 /* Assets.xcassets */,
+				ED681C8C1EC6BCCB0096B9FA /* Data */,
 				ED8888D11EAC1EA2003E21B9 /* LaunchScreen.storyboard */,
 				ED8888CC1EAC1EA2003E21B9 /* Main.storyboard */,
-				ED681C8D1EC6C37E0096B9FA /* TaskDetailViewController.swift */,
 				ED681C661EC562AD0096B9FA /* TheLastTime.xcdatamodeld */,
-				ED681C881EC56C410096B9FA /* TaskCompletion.swift */,
-				ED681C8A1EC56CA20096B9FA /* TaskCompletionStore.swift */,
 			);
 			path = "The Last Time";
 			sourceTree = "<group>";

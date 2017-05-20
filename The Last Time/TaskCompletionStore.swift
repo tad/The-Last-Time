@@ -33,12 +33,14 @@ class TaskCompletionStore {
   }
   
   
-  func addTaskCompletion(name: String, completionDate: Date) {
+  func addTaskCompletion(name: String, completionDate: Date?) {
     let completion = Completion(context: persistentContainer.viewContext)
-    completion.date = completionDate as NSDate
     let task = Task(context: persistentContainer.viewContext)
     task.name = name
-    task.addToCompletions(completion)
+    if (completionDate != nil) {
+      completion.date = completionDate! as NSDate
+      task.addToCompletions(completion)
+    }
     do {
       try persistentContainer.viewContext.save()
       taskCompletions.append(TaskCompletion(date: completionDate, name: name, totalCompletes: 1))
@@ -97,6 +99,9 @@ class TaskCompletionStore {
         if let mostRecentCompletion = task.completions?.lastObject as? Completion {
           let taskCompletion = TaskCompletion(date: mostRecentCompletion.date! as Date, name: task.name!, totalCompletes: (task.completions?.count)!)
           taskCompletions.append(taskCompletion)
+        } else {
+          let taskCompletion = TaskCompletion(date: nil, name: task.name!, totalCompletes: 0)
+          taskCompletions.append(taskCompletion)
         }
       }
     } catch let error as NSError {
@@ -104,7 +109,7 @@ class TaskCompletionStore {
     }
     
     // Sort array so most recently completed tasks are first
-    taskCompletions = taskCompletions.sorted(by: {$0.date > $1.date})
+    taskCompletions = taskCompletions.sorted(by: {$0.date! > $1.date!})
     
     return taskCompletions
   }
