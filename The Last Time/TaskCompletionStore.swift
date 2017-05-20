@@ -62,6 +62,16 @@ class TaskCompletionStore {
     }
   }
   
+  func deleteCompletion(forTask: Task, completion: Completion) {
+    forTask.removeFromCompletions(completion)
+    do {
+      try persistentContainer.viewContext.save()
+      refresh()
+    } catch let error as NSError {
+      print("Save error: \(error), description:\(error.userInfo)")
+    }
+  }
+  
   func deleteTask(_ task:Task) {
     persistentContainer.viewContext.delete(task)
     do {

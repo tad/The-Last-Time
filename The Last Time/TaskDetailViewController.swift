@@ -55,6 +55,16 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     cell.textLabel?.text = dateFormatter.string(from: completionDate)
     return cell
   }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    if editingStyle == .delete {
+      let completion = task.completions?.reversed[indexPath.row]
+      taskCompletionStore.deleteCompletion(forTask: task, completion: completion as! Completion)
+      tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    tableView.reloadData()
+  }
 }
 
 
