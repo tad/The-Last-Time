@@ -44,6 +44,7 @@ class TaskCompletionStore {
     do {
       try persistentContainer.viewContext.save()
       taskCompletions.append(TaskCompletion(date: completionDate, name: name, totalCompletes: 1))
+      refresh()
     } catch let error as NSError {
       print("Save failed: \(error), \(error.userInfo)")
     }

@@ -37,7 +37,6 @@ class TaskCompletionViewController: UITableViewController {
       (action) -> Void in
       if let taskName = alertController.textFields?.first?.text {
         self.taskCompletionStore.addTaskCompletion(name: taskName, completionDate: nil)
-        self.taskCompletionStore.refresh()
         self.tableView.reloadData()
       }
     }
