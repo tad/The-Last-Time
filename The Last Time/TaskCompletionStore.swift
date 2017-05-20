@@ -119,7 +119,7 @@ class TaskCompletionStore {
     }
     
     // Sort array so most recently completed tasks are first
-    taskCompletions = taskCompletions.sorted(by: {$0.date! > $1.date!})
+    taskCompletions = taskCompletions.sorted(by: { $0.date != nil && $0.date! > $1.date!})
     
     return taskCompletions
   }
