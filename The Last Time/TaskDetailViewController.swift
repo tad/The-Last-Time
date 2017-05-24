@@ -30,12 +30,44 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    let tap = UITapGestureRecognizer(target: self, action: #selector(TaskDetailViewController.tapFunction))
+    taskName.addGestureRecognizer(tap)
   }
   
   @IBAction func completeAgainNow(_ sender: UIButton) {
     taskCompletionStore.addNewCompletion(forTask: task)
     tableView.reloadData()
   }
+  
+  func tapFunction(sender:UITapGestureRecognizer) {
+    let alertController = UIAlertController(title: "Edit Task Name", message: nil, preferredStyle: .alert)
+    
+    alertController.addTextField {
+      (textField) -> Void in
+      textField.text = self.task.name
+      textField.autocapitalizationType = .words
+    }
+    
+    let okAction = UIAlertAction(title: "OK", style: .default) {
+      (action) -> Void in
+      if let taskName = alertController.textFields?.first?.text {
+        if taskName.characters.count > 0 {
+          self.task.name = taskName
+          self.taskName?.text = taskName
+          self.taskCompletionStore.saveChanges()
+        }
+      }
+    }
+    
+    alertController.addAction(okAction)
+    
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    alertController.addAction(cancelAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let completions = task.completions?.count else {
       return 1

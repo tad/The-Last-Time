@@ -63,6 +63,14 @@ class TaskCompletionStore {
     }
   }
   
+  func saveChanges() {
+    do {
+      try persistentContainer.viewContext.save()
+    } catch let error as NSError {
+      print("Save error: \(error), description:\(error.userInfo)")
+    }
+  }
+  
   func deleteCompletion(forTask: Task, completion: Completion) {
     forTask.removeFromCompletions(completion)
     do {
