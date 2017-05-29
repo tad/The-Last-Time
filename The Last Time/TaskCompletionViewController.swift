@@ -20,10 +20,6 @@ class TaskCompletionViewController: UITableViewController {
   
   var dateDifference = DateDifference()
   
-  @IBAction func done(_ sender: UIBarButtonItem) {
-    
-  }
-  
   @IBAction func addNewDoneTask(_ sender: UIBarButtonItem) {
     let alertController = UIAlertController(title: "Add Completed Task", message: nil, preferredStyle: .alert)
     
@@ -78,12 +74,25 @@ class TaskCompletionViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     
-    if editingStyle == .delete {      
-      let taskName = taskCompletionStore.taskCompletions[indexPath.row].name
-      let task = taskCompletionStore.getTask(taskName)
-      taskCompletionStore.deleteTask(task)
-      tableView.deleteRows(at: [indexPath], with: .automatic)
-    }    
+    if editingStyle == .delete {
+      
+      let alertController = UIAlertController(title: "Are you sure you want to delete this task?", message: nil, preferredStyle: .alert)
+      
+      let yesAction = UIAlertAction(title: "Yes", style: .default) {
+        (action) -> Void in
+          let taskName = self.taskCompletionStore.taskCompletions[indexPath.row].name
+          let task = self.taskCompletionStore.getTask(taskName)
+          self.taskCompletionStore.deleteTask(task)
+          self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+      alertController.addAction(yesAction)
+      
+      let noAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+      alertController.addAction(noAction)
+      
+      present(alertController, animated: true, completion: nil)
+    }
+    
     tableView.reloadData()
   }
   

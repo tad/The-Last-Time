@@ -32,7 +32,6 @@ class TaskDetailViewController: UIViewController {
   @IBOutlet var taskName: UILabel!
   @IBOutlet var tableView: UITableView!
   
-  
   override func viewWillAppear(_ animated: Bool) {
     taskName?.text = task.name
   }
@@ -41,7 +40,7 @@ class TaskDetailViewController: UIViewController {
     super.viewDidLoad()
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     let tap = UITapGestureRecognizer(target: self, action: #selector(TaskDetailViewController.tapFunction))
-    taskName.addGestureRecognizer(tap)
+    taskName.addGestureRecognizer(tap)    
   }
   
   @IBAction func dateAction(_ sender: UIDatePicker) {
@@ -140,17 +139,13 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     if cellID == dateCellID {
-      // we have either start or end date cells, populate their date field
       cell?.textLabel?.text = dateFormatter.string(from: (task.completions?.reversed[modelRow] as! Completion).date! as Date)
     }
     
     return cell!
-    
-    
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    
     if editingStyle == .delete {
       let completion = task.completions?.reversed[indexPath.row]
       taskCompletionStore.deleteCompletion(forTask: task, completion: completion as! Completion)
