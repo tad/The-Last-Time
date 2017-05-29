@@ -8,16 +8,26 @@
 
 import UIKit
 
-class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TaskDetailViewController: UIViewController {
   var task: Task!
   var taskCompletionStore: TaskCompletionStore!
   
   lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .short
     return formatter
   }()
+  
+  let datePickerTag = 99   // view tag identifiying the date picker view
+  var pickerCellRowHeight: CGFloat = 216
+  
+  // Keep track of which indexPath points to the cell with UIDatePicker
+  var datePickerIndexPath: IndexPath?
+  
+  let datePickerCellID = "datePickerCell"
+  let dateCellID = "Cell"
+
   
   @IBOutlet var taskName: UILabel!
   @IBOutlet var tableView: UITableView!
@@ -32,6 +42,32 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     let tap = UITapGestureRecognizer(target: self, action: #selector(TaskDetailViewController.tapFunction))
     taskName.addGestureRecognizer(tap)
+  }
+  
+  @IBAction func dateAction(_ sender: UIDatePicker) {
+    var targetedCellIndexPath: IndexPath?
+    
+    if hasInlineDatePicker() {
+      // inline date picker: update the cell's date "above" the date picker cell
+      targetedCellIndexPath = IndexPath(row: datePickerIndexPath!.row - 1, section: 0)
+    } else {
+      // external date picker: update the current "selected" cell's date
+      targetedCellIndexPath = tableView.indexPathForSelectedRow!
+    }
+    
+    let cell = tableView.cellForRow(at: targetedCellIndexPath!)
+    let targetedDatePicker = sender
+    
+    // update our data model
+    let updatedCompletion = task.completions?.reversed[targetedCellIndexPath!.row] as! Completion
+    
+    updatedCompletion.date = targetedDatePicker.date as NSDate
+    
+    taskCompletionStore.saveChanges()
+    
+    // update the cell's date string
+    cell?.textLabel?.text = dateFormatter.string(from: targetedDatePicker.date)
+    tableView.reloadData()
   }
   
   @IBAction func completeAgainNow(_ sender: UIButton) {
@@ -66,26 +102,51 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     present(alertController, animated: true, completion: nil)
   }
-  
+}
+
+extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     guard let completions = task.completions?.count else {
       return 1
     }
     
+    if hasInlineDatePicker() {
+      return completions + 1
+    }
+    
     return completions
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell: UITableViewCell?
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-                
-    guard let completion = task.completions?.reversed[indexPath.row] as? Completion, let completionDate = completion.date as Date? else {
-      return cell
+    var cellID = dateCellID
+    
+    if indexPathHasPicker(indexPath) {
+      // the indexPath is the one containing the inline date picker
+      cellID = datePickerCellID     // the current/opened date picker cell
     }
     
-    cell.textLabel?.text = dateFormatter.string(from: completionDate)
-    return cell
+    cell = tableView.dequeueReusableCell(withIdentifier: cellID)
+    
+    // if we have a date picker open whose cell is above the cell we want to update,
+    // then we have one more cell than the model allows
+    var modelRow = indexPath.row
+    if let path = datePickerIndexPath {
+      if path.row <= indexPath.row {
+        modelRow = modelRow - 1
+      }
+    }
+    
+    if cellID == dateCellID {
+      // we have either start or end date cells, populate their date field
+      cell?.textLabel?.text = dateFormatter.string(from: (task.completions?.reversed[modelRow] as! Completion).date! as Date)
+    }
+    
+    return cell!
+    
+    
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -96,6 +157,112 @@ class TaskDetailViewController: UIViewController, UITableViewDelegate, UITableVi
       tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     tableView.reloadData()
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+  {
+    let cell = tableView.cellForRow(at: indexPath)
+    if cell?.reuseIdentifier == dateCellID {
+      displayInlineDatePickerForRowAtIndexPath(indexPath)
+    } else {
+      tableView.deselectRow(at: indexPath, animated: true)
+    }
+  }
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+  {
+    return (indexPathHasPicker(indexPath) ? pickerCellRowHeight : tableView.rowHeight)
+  }
+  
+}
+
+// Helper for datePicker
+extension TaskDetailViewController {
+  
+  func hasPickerForIndexPath(_ indexPath: IndexPath) -> Bool {
+    var hasDatePicker = false
+    
+    let targetedRow = indexPath.row + 1
+    
+    let checkDatePickerCell = tableView.cellForRow(at: IndexPath(row: targetedRow, section: 0))
+    let checkDatePicker = checkDatePickerCell?.viewWithTag(datePickerTag)
+    
+    hasDatePicker = checkDatePicker != nil
+    return hasDatePicker
+  }
+  
+  func updateDatePicker() {
+    if let indexPath = datePickerIndexPath {
+      let associatedDatePickerCell = tableView.cellForRow(at: indexPath)
+      if let targetedDatePicker = associatedDatePickerCell?.viewWithTag(datePickerTag) as! UIDatePicker? {
+        let itemData = task.completions?.reversed[datePickerIndexPath!.row - 1] as! Completion
+        targetedDatePicker.setDate(itemData.date! as Date , animated: false)
+      }
+    }
+  }
+  
+  func toggleDatePickerForSelectedIndexPath(_ indexPath: IndexPath) {
+    
+    tableView.beginUpdates()
+    
+    let indexPaths = [IndexPath(row: indexPath.row + 1, section: 0)]
+    
+    // check if 'indexPath' has an attached date picker below it
+    if hasPickerForIndexPath(indexPath) {
+      // found a picker below it, so remove it
+      tableView.deleteRows(at: indexPaths, with: .fade)
+    } else {
+      // didn't find a picker below it, so we should insert it
+      tableView.insertRows(at: indexPaths, with: .fade)
+    }
+    tableView.endUpdates()
+  }
+  
+  func displayInlineDatePickerForRowAtIndexPath(_ indexPath: IndexPath) {
+    
+    // display the date picker inline with the table content
+    tableView.beginUpdates()
+    
+    var before = false // indicates if the date picker is below "indexPath", help us determine which row to reveal
+    
+    if hasInlineDatePicker() {
+      if let path = datePickerIndexPath {
+        before = path.row < indexPath.row
+      }
+    }
+    
+    let sameCellClicked = (datePickerIndexPath?.row == indexPath.row + 1)
+    
+    // remove any date picker cell if it exists
+    if hasInlineDatePicker() {
+      tableView.deleteRows(at: [IndexPath(row: datePickerIndexPath!.row, section: 0)], with: .fade)
+      datePickerIndexPath = nil
+    }
+    
+    if !sameCellClicked {
+      // hide the old date picker and display the new one
+      let rowToReveal = (before ? indexPath.row - 1 : indexPath.row)
+      let indexPathToReveal = IndexPath(row: rowToReveal, section: 0)
+      
+      toggleDatePickerForSelectedIndexPath(indexPathToReveal)
+      datePickerIndexPath = IndexPath(row: indexPathToReveal.row + 1, section: 0)
+    }
+    
+    // always deselect the row containing the start or end date
+    tableView.deselectRow(at: indexPath, animated:true)
+    
+    tableView.endUpdates()
+    
+    // inform our date picker of the current date to match the current cell
+    updateDatePicker()
+  }
+  
+  func hasInlineDatePicker() -> Bool {
+    return datePickerIndexPath != nil
+  }
+  
+  func indexPathHasPicker(_ indexPath: IndexPath) -> Bool {
+    return hasInlineDatePicker() && datePickerIndexPath?.row == indexPath.row
   }
 }
 

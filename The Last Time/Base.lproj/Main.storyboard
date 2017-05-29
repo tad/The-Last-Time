@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--The Last Time I...-->
+        <!--The Last Time I-->
         <scene sceneID="MVt-SV-PSU">
             <objects>
                 <tableViewController id="G1d-Cd-k4B" customClass="TaskCompletionViewController" customModule="The_Last_Time" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                             <outlet property="delegate" destination="G1d-Cd-k4B" id="VEv-v3-ho7"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="The Last Time I..." id="wmg-bn-zq6">
+                    <navigationItem key="navigationItem" title="The Last Time I" id="wmg-bn-zq6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jX1-YG-vl5">
                             <connections>
                                 <action selector="addNewDoneTask:" destination="G1d-Cd-k4B" id="NaP-cc-v42"/>
@@ -102,6 +102,39 @@
                                 <rect key="frame" x="0.0" y="168" width="375" height="533"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="BAF-mk-mtF">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BAF-mk-mtF" id="kDm-Li-Iqv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="datePickerCell" rowHeight="216" id="mDM-54-Fqe">
+                                        <rect key="frame" x="0.0" y="72" width="375" height="216"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mDM-54-Fqe" id="p1y-Ab-YCW">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="216"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker tag="99" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nAs-GA-8h4">
+                                                    <rect key="frame" x="8" y="-9" width="320" height="216"/>
+                                                    <date key="date" timeIntervalSinceReferenceDate="517711327.88044">
+                                                        <!--2017-05-29 00:42:07 +0000-->
+                                                    </date>
+                                                    <connections>
+                                                        <action selector="dateAction:" destination="6Rp-ZN-uWE" eventType="valueChanged" id="Hxt-zA-jS6"/>
+                                                    </connections>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="leadingMargin" secondItem="nAs-GA-8h4" secondAttribute="leading" id="AW2-tu-pBv"/>
+                                                <constraint firstItem="nAs-GA-8h4" firstAttribute="top" secondItem="p1y-Ab-YCW" secondAttribute="topMargin" constant="-17" id="uWv-cb-z3U"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="6Rp-ZN-uWE" id="P1V-H0-b6F"/>
                                     <outlet property="delegate" destination="6Rp-ZN-uWE" id="jWK-5c-vR2"/>
