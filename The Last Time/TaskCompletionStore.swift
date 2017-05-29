@@ -72,7 +72,7 @@ class TaskCompletionStore {
   }
   
   func deleteCompletion(forTask: Task, completion: Completion) {
-    forTask.removeFromCompletions(completion)
+    forTask.removeFromCompletions(completion)    
     do {
       try persistentContainer.viewContext.save()
       refresh()

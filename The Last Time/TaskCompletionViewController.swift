@@ -102,9 +102,6 @@ class TaskCompletionViewController: UITableViewController {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCompletionCell", for: indexPath) as! TaskCompletionCell
     
-    // Set the text on the cell with the description of the item
-    // that is at the nth index of items, where n = row this cell
-    // will appear in on the tableView
     let taskCompletion = taskCompletionStore.taskCompletions[indexPath.row]
     
     cell.nameLabel.text = taskCompletion.name

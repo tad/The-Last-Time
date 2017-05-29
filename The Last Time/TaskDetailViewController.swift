@@ -12,6 +12,8 @@ class TaskDetailViewController: UIViewController {
   var task: Task!
   var taskCompletionStore: TaskCompletionStore!
   
+  var completions = [Completion]()
+  
   lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateStyle = .medium
@@ -29,6 +31,7 @@ class TaskDetailViewController: UIViewController {
   let dateCellID = "Cell"
 
   
+  
   @IBOutlet var taskName: UILabel!
   @IBOutlet var tableView: UITableView!
   
@@ -38,9 +41,13 @@ class TaskDetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let dateSort = NSSortDescriptor(key: #keyPath(Completion.date), ascending: false)
+    completions = task.completions?.sortedArray(using: [dateSort]) as! [Completion]
+    
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     let tap = UITapGestureRecognizer(target: self, action: #selector(TaskDetailViewController.tapFunction))
-    taskName.addGestureRecognizer(tap)    
+    taskName.addGestureRecognizer(tap)
   }
   
   @IBAction func dateAction(_ sender: UIDatePicker) {
@@ -58,19 +65,22 @@ class TaskDetailViewController: UIViewController {
     let targetedDatePicker = sender
     
     // update our data model
-    let updatedCompletion = task.completions?.reversed[targetedCellIndexPath!.row] as! Completion
-    
-    updatedCompletion.date = targetedDatePicker.date as NSDate
+    task.completions = NSOrderedSet(array: completions)
+    completions[targetedCellIndexPath!.row].date = targetedDatePicker.date as NSDate
     
     taskCompletionStore.saveChanges()
     
     // update the cell's date string
     cell?.textLabel?.text = dateFormatter.string(from: targetedDatePicker.date)
-    tableView.reloadData()
+    
   }
   
   @IBAction func completeAgainNow(_ sender: UIButton) {
     taskCompletionStore.addNewCompletion(forTask: task)
+    
+    let dateSort = NSSortDescriptor(key: #keyPath(Completion.date), ascending: false)
+    completions = task.completions?.sortedArray(using: [dateSort]) as! [Completion]
+    
     tableView.reloadData()
   }
   
@@ -139,7 +149,7 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     if cellID == dateCellID {
-      cell?.textLabel?.text = dateFormatter.string(from: (task.completions?.reversed[modelRow] as! Completion).date! as Date)
+      cell?.textLabel?.text = dateFormatter.string(from: completions[modelRow].date! as Date)
     }
     
     return cell!
@@ -147,10 +157,14 @@ extension TaskDetailViewController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      let completion = task.completions?.reversed[indexPath.row]
-      taskCompletionStore.deleteCompletion(forTask: task, completion: completion as! Completion)
+      let completion = completions[indexPath.row]
+      taskCompletionStore.deleteCompletion(forTask: task, completion: completion)
       tableView.deleteRows(at: [indexPath], with: .automatic)
     }
+    
+    let dateSort = NSSortDescriptor(key: #keyPath(Completion.date), ascending: false)
+    completions = task.completions?.sortedArray(using: [dateSort]) as! [Completion]
+    
     tableView.reloadData()
   }
   
@@ -190,7 +204,7 @@ extension TaskDetailViewController {
     if let indexPath = datePickerIndexPath {
       let associatedDatePickerCell = tableView.cellForRow(at: indexPath)
       if let targetedDatePicker = associatedDatePickerCell?.viewWithTag(datePickerTag) as! UIDatePicker? {
-        let itemData = task.completions?.reversed[datePickerIndexPath!.row - 1] as! Completion
+        let itemData = completions[datePickerIndexPath!.row - 1]
         targetedDatePicker.setDate(itemData.date! as Date , animated: false)
       }
     }
@@ -250,6 +264,12 @@ extension TaskDetailViewController {
     
     // inform our date picker of the current date to match the current cell
     updateDatePicker()
+    
+    let dateSort = NSSortDescriptor(key: #keyPath(Completion.date), ascending: false)
+    completions = task.completions?.sortedArray(using: [dateSort]) as! [Completion]
+    
+    tableView.reloadData()
+
   }
   
   func hasInlineDatePicker() -> Bool {
