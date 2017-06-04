@@ -66,13 +66,14 @@ class TaskDetailViewController: UIViewController {
     
     // update our data model
     task.completions = NSOrderedSet(array: completions)
-    completions[targetedCellIndexPath!.row].date = targetedDatePicker.date as NSDate
-    
-    taskCompletionStore.saveChanges()
-    
-    // update the cell's date string
-    cell?.textLabel?.text = dateFormatter.string(from: targetedDatePicker.date)
-    
+    if targetedDatePicker.date < Date() {
+      completions[targetedCellIndexPath!.row].date = targetedDatePicker.date as NSDate
+      
+      taskCompletionStore.saveChanges()
+      
+      // update the cell's date string
+      cell?.textLabel?.text = dateFormatter.string(from: targetedDatePicker.date)
+    }
   }
   
   @IBAction func completeAgainNow(_ sender: UIButton) {
@@ -80,8 +81,8 @@ class TaskDetailViewController: UIViewController {
     
     let dateSort = NSSortDescriptor(key: #keyPath(Completion.date), ascending: false)
     completions = task.completions?.sortedArray(using: [dateSort]) as! [Completion]
-    
     tableView.reloadData()
+    taskCompletionStore.refresh()
   }
   
   func tapFunction(sender:UITapGestureRecognizer) {
@@ -206,6 +207,7 @@ extension TaskDetailViewController {
       if let targetedDatePicker = associatedDatePickerCell?.viewWithTag(datePickerTag) as! UIDatePicker? {
         let itemData = completions[datePickerIndexPath!.row - 1]
         targetedDatePicker.setDate(itemData.date! as Date , animated: false)
+        targetedDatePicker.maximumDate = Date()
       }
     }
   }

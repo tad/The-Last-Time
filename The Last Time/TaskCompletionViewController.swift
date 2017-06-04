@@ -102,6 +102,7 @@ class TaskCompletionViewController: UITableViewController {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCompletionCell", for: indexPath) as! TaskCompletionCell
     
+    taskCompletionStore.refresh()
     let taskCompletion = taskCompletionStore.taskCompletions[indexPath.row]
     
     cell.nameLabel.text = taskCompletion.name

@@ -115,7 +115,7 @@ class TaskCompletionStore {
       let tasks = try persistentContainer.viewContext.fetch(fetchRequest)
       
       for task in tasks {
-        if let mostRecentCompletion = task.completions?.firstObject as? Completion {
+        if let mostRecentCompletion = task.completions?.sorted(by: {($0 as! Completion).date! as Date > ($1 as! Completion).date! as Date}).first as? Completion {
           let taskCompletion = TaskCompletion(date: mostRecentCompletion.date! as Date, name: task.name!, totalCompletes: (task.completions?.count)!)
           taskCompletions.append(taskCompletion)
         } else {
@@ -128,7 +128,9 @@ class TaskCompletionStore {
     }
     
     // Sort array so most recently completed tasks are first
-//    taskCompletions = taskCompletions.sorted(by: { $0.date != nil && $0.date! < $1.date!})
+    if taskCompletions.count > 0 {
+      taskCompletions = taskCompletions.sorted(by: { $0.date != nil && $1.date != nil && $0.date! > $1.date!})
+    }
     
     return taskCompletions
   }
