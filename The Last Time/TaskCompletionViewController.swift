@@ -56,7 +56,6 @@ class TaskCompletionViewController: UITableViewController {
       selector: #selector(applicationDidBecomeActive(_:)),
       name: NSNotification.Name.UIApplicationDidBecomeActive,
       object: nil)
-    
   }
   
   func applicationDidBecomeActive(_ notification: NSNotification) {

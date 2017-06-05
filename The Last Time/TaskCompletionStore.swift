@@ -103,7 +103,7 @@ class TaskCompletionStore {
        returnTask = try persistentContainer.viewContext.fetch(fetchRequest).first!
     } catch let error as NSError {
       print("Fetch failed: \(error), \(error.userInfo)")
-    }        
+    }
     
     return returnTask!
   }
